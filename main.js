@@ -7,12 +7,6 @@ class MainMenu extends Phaser.Scene {
 
     create() {
 
-        // // Debug mode
-        // if (config.physics.arcade.debug === true) {
-        //     console.log('debug mode');
-        //     this.scene.start('Level_1');
-        // }
-
         // Set background color
         this.cameras.main.setBackgroundColor('#909acd'); // Replace '#ffffff' with the desired color
 
@@ -162,19 +156,21 @@ class Settings extends Phaser.Scene {
 }
 
 class Level_Base extends Phaser.Scene {
-    constructor() {
-        super({key: 'Level_Base'});
+    constructor(key) {
+        super({key: key});
 
         this.acceleration = 150;
         this.maxAcceleration = 200;
         this.maxSpeed = 500;
         this.spacebar = null;
+        this.isLevelCompleteRunning = false;
+        this.isLevelFailedRunning = false;
     }
 
     preload() {
         // Load images from assets
         this.load.spritesheet('volvo', 'assets/volvo.png', { frameWidth: 101, frameHeight: 54 })
-        this.load.spritesheet('flag', 'assets/flags.png', { frameWidth: 0 /*TODO: Unknown value */, frameHeight: 131 });
+        this.load.spritesheet('flag', 'assets/flags.png', { frameWidth: 77, frameHeight: 131 });
     
         this.load.audio('explosion', 'assets/music/car-explode.wav');
         this.load.audio('victory', 'assets/music/car-victory.wav');
@@ -218,12 +214,14 @@ class Level_Base extends Phaser.Scene {
         // Spacebar
         this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-        this.anims.create({
-            key: 'flag-wave',
-            frames: this.anims.generateFrameNumbers('flag', { start: 0, end: 3 }),
-            frameRate: 10,
-            repeat: -1
-        });
+        if (this.anims.get('flag-wave') === undefined) {
+            this.anims.create({
+                key: 'flag-wave',
+                frames: this.anims.generateFrameNumbers('flag', { start: 0, end: 3 }),
+                frameRate: 10,
+                repeat: -1
+            });
+        }
 
         this.createCamera(car);
 
@@ -268,14 +266,18 @@ class Level_Base extends Phaser.Scene {
     }
 
     levelComplete(scene) {
-        // Add victory text
-        scene.add.text(100, 100, 'Level complete', { fontSize: '32px', fill: '#000' });
 
+        console.debug('levelComplete: Level complete');
+        // Add victory text
+        const camera = scene.cameras.main;
+        const midPoint = camera.midPoint;
+        scene.add.text(midPoint.x, midPoint.y - 100, 'Level complete', { fontSize: '64px', fill: '#000' });
+        
         // Fade out
-        scene.cam.fadeOut(1000);
+        scene.cam.fadeOut(4000);
 
         // Wait 1 second
-        scene.time.delayedCall(1000, () => {
+        scene.time.delayedCall(4000, () => {
             // Stop music
             if (audioOn === true) {
                 scene.music.stop();
@@ -283,6 +285,8 @@ class Level_Base extends Phaser.Scene {
             }
             this.scene.start('MainMenu');
         }, [], scene);
+
+        
     }
 
     levelFailed(scene) {
@@ -299,10 +303,14 @@ class Level_Base extends Phaser.Scene {
             }
             this.scene.start(scene.scene.key);
         }, [], scene);
+
+        this.isLevelFailedRunning = false;
     }
 
     createFlag(x, y, scene) {
         const flag = scene.physics.add.sprite(x, y, 'flag').play('flag-wave');
+        flag.body.immovable = true;
+        flag.body.allowGravity = false;
 
         // If there exists a car in the scene, make collider
         if (scene.car !== null) {
@@ -316,6 +324,7 @@ class Level_Base extends Phaser.Scene {
 
     createCar(x, y, scene) {
         const car = scene.physics.add.sprite(x, y, 'volvo').play('stationary');
+        car.setAcceleration(this.acceleration);
 
         // If there exists a flag in the scene, make collider
         if (scene.flag !== null) {
@@ -331,7 +340,7 @@ class Level_Base extends Phaser.Scene {
 
 class Level_1 extends Level_Base {
     constructor() {
-        super({key: 'Level_1'});
+        super('Level_1');
 
         this.car = null;
         this.ground = null;
@@ -343,9 +352,6 @@ class Level_1 extends Level_Base {
     }
 
     preload() {
-
-        throw new Error('Level 1 is not yet implemented');
-
         super.preload();
         // Load images from assets/level_1
         this.load.image('background', 'assets/level_1/background.png');
@@ -355,8 +361,8 @@ class Level_1 extends Level_Base {
         this.load.image('ground-2', 'assets/level_1/ground-2.png');
         this.load.image('ground-3', 'assets/level_1/ground-3.png');
         this.load.image('start-finish-line', 'assets/level_1/start-finish-line.png');
-        this.load.spritesheet('lava-1', 'assets/level_1/lava-1.png', { frameWidth: 0 /*TODO: Unkown value */, frameHeight: 82 });
-        this.load.spritesheet('lava-2', 'assets/level_1/lava-2.png', { frameWidth: 0 /*TODO: Unkown value */, frameHeight: 82 });
+        this.load.spritesheet('lava-1', 'assets/level_1/lava-1.png', { frameWidth: 136, frameHeight: 82 });
+        this.load.spritesheet('lava-2', 'assets/level_1/lava-2.png', { frameWidth: 136, frameHeight: 82 });
 
         // Miscellanious: Update HTML elements
         document.querySelector('#dimensions').innerHTML = 'Game dimensions: ' + this.game.config.width + 'x' + this.game.config.height + ' px';
@@ -370,15 +376,15 @@ class Level_1 extends Level_Base {
 
     create() {
 
+        // Background image
+        this.add.image(0, 0, 'background').setOrigin(0, 0).setDepth(-1).setScrollFactor(0);
 
         // Car sprite
-        this.car = this.physics.add.sprite(400, 300, 'volvo');
-        this.car.setAcceleration(this.acceleration);
+        this.car = super.createCar(400, 300, this);
 
         super.create(this.car);
 
-        // Background image
-        this.add.image(0, 0, 'background').setOrigin(0, 0);
+        this.flag = super.createFlag(223 * 20, 600 - 138, this);
 
         // Music
         if (audioOn === true) {
@@ -395,14 +401,19 @@ class Level_1 extends Level_Base {
             const y = this.game.config.height; // Adjust as needed
             this.ground.create(x, y, 'ground-3');
         }
-    
-        // Flag
-        this.flag = this.physics.add.sprite(1000, 500, 'flag');
 
         // Colliders
+
+        
+        console.debug('this.car:', this.car);
+        console.debug('this.ground:', this.ground);
+        console.debug('this.flag:', this.flag);
+        console.debug('this.lava:', this.lava);
+
+
         this.physics.add.collider(this.car, this.ground);
-        this.physics.add.collider(this.car, this.lava, () => super.levelFailed(this.music), null, this);
-        this.physics.add.collider(this.flag, this.car, () => super.levelComplete(this.music), null, this);
+        this.physics.add.collider(this.flag, this.car, () => super.levelComplete(this), null, this);
+        //this.physics.add.collider(this.lava, this.car, () => super.levelFailed(this), null, this);
     }
 
     update() {

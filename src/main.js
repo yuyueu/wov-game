@@ -1,8 +1,7 @@
 // Create a new Phaser game configuration
 
 import Phaser from 'phaser';
-
-import constants from './utils/physicsUtils.js';
+import PhaserMatterCollisionPlugin from 'phaser-matter-collision-plugin';
 
 import MainMenu from './scenes/main_menu.js';
 import LevelSelect from './scenes/level_select.js';
@@ -18,10 +17,19 @@ const config = {
   backgroundColor: '#87CEEB',
   physics: {
     default: "matter",
-    arcade: {
-        gravity: { y: 0.5 },
+    matter: {
+        gravity: { y: 1 },
         debug: true
     }
+  },
+  plugins: {
+    scene: [
+      {
+        plugin: PhaserMatterCollisionPlugin, // The plugin class
+        key: "matterCollision", // Where to store in Scene.Systems, e.g. scene.sys.matterCollision
+        mapping: "matterCollision" // Where to store in the Scene, e.g. scene.matterCollision
+      }
+    ]
   },
   scene: [MainMenu, LevelSelect, Info, Settings, Level_1]
 };

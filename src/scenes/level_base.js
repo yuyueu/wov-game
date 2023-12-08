@@ -1,6 +1,7 @@
 import constants from '../utils/physicsUtils.js';
 
 import Phaser from 'phaser';
+import PhaserMatterCollisionPlugin from 'phaser-matter-collision-plugin';
 
 class Level_Base extends Phaser.Scene {
     constructor(key) {
@@ -15,7 +16,7 @@ class Level_Base extends Phaser.Scene {
         this.load.spritesheet('volvo', 'assets/volvo.png', { frameWidth: 101, frameHeight: 54 });
         this.load.json('volvoPhysics', 'assets/json/Volvo.json');
 
-        this.load.spritesheet('flag', 'assets/flags.png', { frameWidth: 55, frameHeight: 132 });
+        this.load.spritesheet('flag', 'assets/flags.png', { frameWidth: 79, frameHeight: 131 });
         this.load.json('flagPhysics', 'assets/json/Flag.json');
     
         this.load.audio('explosion', 'assets/music/sfx/car-explode.wav');
@@ -27,6 +28,7 @@ class Level_Base extends Phaser.Scene {
         // Backup background color
         this.cameras.main.setBackgroundColor('#87CEEB'); // Sky blue
 
+        console.debug('create: Creating animations');
         // Create animations if not yet created
         if (this.anims.get('stationary') === undefined) {
             // Stationary
@@ -68,22 +70,21 @@ class Level_Base extends Phaser.Scene {
                 repeat: -1
             });
         }
-
-        this.createCamera(scene.car);
-
     }
 
-    createCamera(car) {
+    createCamera(obj) {
         // Camera
         this.cam = this.cameras.main;
 
         // Set the bounds of the camera. The camera will not move outside these bounds.
         this.cam.setBounds(0, 0, Infinity, this.game.config.height);
 
-        // Set the camera to follow the car sprite. The camera will smoothly follow the car as it moves.
-        const yOffset = -car.height * 0.75;
-        this.cam.startFollow(car, false, 0.05, 1);
+        // Set the camera to follow the obj sprite. The camera will smoothly follow the car as it moves.
+        const yOffset = -obj.height * 0.75;
+        this.cam.startFollow(obj, false, 0.05, 1);
         this.cam.setFollowOffset(0, yOffset);
+
+        return this.cam;
     }
 
     update(scene) {
@@ -194,6 +195,7 @@ class Level_Base extends Phaser.Scene {
     }
 
     createCar(x, y, scene) {
+        console.debug('createCar: Creating car')
         const car = scene.matter.add.sprite(x, y, 'volvo').play('stationary');
         car.setIgnoreGravity(false); // Matter.js sprites ignore gravity by default
 

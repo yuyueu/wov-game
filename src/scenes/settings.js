@@ -1,3 +1,5 @@
+import constants from '../utils/physicsUtils.js';
+
 class Settings extends Phaser.Scene {
     constructor() {
         super({key: 'Settings'});
@@ -12,14 +14,14 @@ class Settings extends Phaser.Scene {
         this.add.text(100, 100, 'Settings', { fontSize: '32px', fill: '#000' });
 
         // Audio button
-        const audioButton = this.add.text(100, 200, (audioOn ? "Audio: On" : "Audio: Off"), { fontSize: '20px', fill: '#000' });
+        const audioButton = this.add.text(100, 200, (constants.audioOn ? "Audio: On" : "Audio: Off"), { fontSize: '20px', fill: '#000' });
         audioButton.setInteractive();
         audioButton.on('pointerdown', () => {
-            if (audioOn) {
-                audioOn = false;
+            if (constants.audioOn) {
+                constants.audioOn = false;
                 audioButton.setText('Audio: Off');
             } else {
-                audioOn = true;
+                constants.audioOn = true;
                 audioButton.setText('Audio: On');
             }
         });

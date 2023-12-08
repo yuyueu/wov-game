@@ -1,8 +1,8 @@
 const constants = {
     audioOn : true,
-    acceleration : 150,
-    maxAcceleration : 200,
-    maxSpeed : 500
+    acceleration : 60,
+    maxAcceleration : 60,
+    maxSpeed : 120
 }
 
 export default constants;

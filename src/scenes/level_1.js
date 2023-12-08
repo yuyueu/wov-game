@@ -1,4 +1,5 @@
 import Level_Base from './level_base.js';
+import constants from '../utils/physicsUtils.js';
 
 class Level_1 extends Level_Base {
     constructor() {
@@ -6,10 +7,7 @@ class Level_1 extends Level_Base {
 
         this.car = null;
         this.ground = null;
-        this.clouds = null;
         this.flag = null;
-        this.startFinishLine = null;
-        this.lava = null;
         this.cam = null;
     }
 
@@ -17,14 +15,14 @@ class Level_1 extends Level_Base {
         super.preload();
         // Load images from assets/level_1
         this.load.image('background', 'assets/level_1/background.png');
-        this.load.image('clouds-1', 'assets/level_1/clouds-1.png');
-        this.load.image('clouds-2', 'assets/level_1/clouds-2.png');
-        this.load.image('ground-1', 'assets/level_1/ground-1.png');
-        this.load.image('ground-2', 'assets/level_1/ground-2.png');
+        //this.load.image('clouds-1', 'assets/level_1/clouds-1.png');
+        //this.load.image('clouds-2', 'assets/level_1/clouds-2.png');
+        //this.load.image('ground-1', 'assets/level_1/ground-1.png');
+        //this.load.image('ground-2', 'assets/level_1/ground-2.png');
         this.load.image('ground-3', 'assets/level_1/ground-3.png');
-        this.load.image('start-finish-line', 'assets/level_1/start-finish-line.png');
-        this.load.spritesheet('lava-1', 'assets/level_1/lava-1.png', { frameWidth: 136, frameHeight: 82 });
-        this.load.spritesheet('lava-2', 'assets/level_1/lava-2.png', { frameWidth: 136, frameHeight: 82 });
+        //this.load.image('start-finish-line', 'assets/level_1/start-finish-line.png');
+        //this.load.spritesheet('lava-1', 'assets/level_1/lava-1.png', { frameWidth: 136, frameHeight: 82 });
+        //this.load.spritesheet('lava-2', 'assets/level_1/lava-2.png', { frameWidth: 136, frameHeight: 82 });
 
         // Load audio from assets
         this.load.audio('background-music', 'assets/music/background/level_1.mp3');
@@ -33,18 +31,19 @@ class Level_1 extends Level_Base {
 
     create() {
 
+        super.create(this);
+
         // Background image
         this.add.image(0, 0, 'background').setOrigin(0, 0).setDepth(-1).setScrollFactor(0);
 
         // Car sprite
         this.car = super.createCar(400, 300, this);
-
-        super.create(this);
+        this.cam = super.createCamera(this.car);
 
         this.flag = super.createFlag(223 * 20, 600 - 138, this);
 
         // Music
-        if (audioOn === true) {
+        if (constants.audioOn === true) {
             this.music = this.sound.add('background-music');
             this.music.setLoop(true);
             this.music.play();
@@ -67,7 +66,7 @@ class Level_1 extends Level_Base {
         console.debug('this.car:', this.car);
         console.debug('this.ground:', this.ground);
         console.debug('this.flag:', this.flag);
-        console.debug('this.lava:', this.lava);
+        console.debug('this.cam:', this.cam);
 
 
         this.matter.world.on('collisionstart', (event, bodyA, bodyB) => {

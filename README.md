@@ -21,25 +21,42 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them:
 
 * Latest version of [phaser.io](https://phaser.io/download)
+* [Node.js and npm](https://nodejs.org/en/download/) (npm is included with Node.js)
+* [Webpack](https://webpack.js.org/guides/installation/) - We use Webpack to bundle our JavaScript files.
+* [Babel](https://babeljs.io/docs/en/babel-cli#install) - We use Babel to transpile our JavaScript code.
 
 ### Installation
 
 1. Clone the repository
 
-```git clone https://github.com/yourusername/wov-game.git```
+```git clone https://github.com/RashadHashemi/wov-game.git```
 
 2. Navigate into the cloned repository
 
 ```cd wov-game```
 
-3. Install the dependencies
+3. Install Node.js and npm if you haven't already. You can download them [here](https://nodejs.org/en/download/)
 
-4. Start game with a web server (I recommend python's http.server)
+4. Install the dependencies using npm:
+
+```npm install```
+
+5. Build the project using Webpack:
+
+```npm run build```
+
+6. Start the game wth a web server. If you have Python installed you can use Python' built-in HTTP server:
+
+``python -m http.server``
+
+Then open your web browser and navigate to ``http://localhost:8000`` to see the game
 
 ## Built With
 
 * JavaScript - The programming language used
 * Phaser - The game framework used
+* Webpack - Used to bundle the JavaScript files
+* Babel - Used to transpile the JavaScript code
 
 ## Contributing
 

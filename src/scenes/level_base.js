@@ -1,5 +1,7 @@
 import constants from '../utils/physicsUtils.js';
 
+import Phaser from 'phaser';
+
 class Level_Base extends Phaser.Scene {
     constructor(key) {
         super({key: key});

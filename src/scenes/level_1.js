@@ -94,4 +94,4 @@ class Level_1 extends Level_Base {
     }
 }
 
-export default Level_1;
+export {Level_1};

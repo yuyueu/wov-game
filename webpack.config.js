@@ -5,7 +5,8 @@ module.exports = {
     entry: './src/main.js', // path to your main.js file
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
+        chunkFilename: '[id].bundle.js',
         clean: true
     },
     module: {
@@ -25,7 +26,8 @@ module.exports = {
     plugins: [
         new CopyWebpackPlugin({
             patterns: [
-                { from: 'src/assets', to: 'assets' }
+                { from: 'src/assets', to: 'assets' },
+                { from: 'src/index.htm', to: 'index.htm' }
             ]
         })
     ],

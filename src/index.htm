@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World of Volvo - Car Game</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Game test</title>
 </head>
+
 <body>
-    <script>
-        console.log("Browser width: " + window.innerWidth + " Browser height: " + window.innerHeight);
-    </script>
+
     <style>
-        canvas {
-            padding-left: 0;
-            padding-right: 0;
-            margin-left: 0;
-            margin-right: 0;
-            display: block;
-        }
         body {
             margin: 0;
+            padding: 0;
         }
     </style>
-    <script src="../dist/bundle.js"></script>
-    <div id="game"></div>
+    
+    <!-- Your application content goes here -->
+    <div class="game"></div>
+
+    <!-- Include the runtime bundle -->
+    <script src="runtime.bundle.js"></script>
+
+    <!-- Include the main bundle -->
+    <script src="main.bundle.js"></script>
 </body>
+
 </html>

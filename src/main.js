@@ -11,8 +11,8 @@ import {Level_1} from './scenes/level_1.js';
 
 const config = {
   type: Phaser.AUTO,
-  width: 800,
-  height: 600,
+  width: 1920,
+  height: 1080,
   parent: 'game',
   backgroundColor: '#87CEEB',
   physics: {

@@ -1,0 +1,31 @@
+{
+	"generator_info": "Shape definitions generated with PhysicsEditor. Visit https://www.codeandweb.com/physicseditor",
+	"ground-1": {
+		"type": "fromPhysicsEditor",
+		"label": "ground-1",
+		"isStatic": true,
+		"density": 0.1,
+		"restitution": 0,
+		"friction": 0.1,
+		"frictionAir": 0.01,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "ground-1-fixtures",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":0, "y":108 }, { "x":0, "y":245 }, { "x":550, "y":245 }, { "x":342, "y":108 } ],
+					[ { "x":549, "y":0 }, { "x":474, "y":48 }, { "x":550, "y":245 } ],
+					[ { "x":474, "y":48 }, { "x":414, "y":81 }, { "x":550, "y":245 } ],
+					[ { "x":342, "y":108 }, { "x":550, "y":245 }, { "x":392, "y":91 } ],
+					[ { "x":414, "y":81 }, { "x":392, "y":91 }, { "x":550, "y":245 } ]
+				]
+			}
+		]
+	}
+}

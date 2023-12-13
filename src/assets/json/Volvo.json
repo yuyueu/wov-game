@@ -1,0 +1,33 @@
+{
+	"generator_info": "Shape definitions generated with PhysicsEditor. Visit https://www.codeandweb.com/physicseditor",
+	"Volvo": {
+		"type": "fromPhysicsEditor",
+		"label": "Volvo",
+		"isStatic": false,
+		"density": 0.5,
+		"restitution": 0,
+		"friction": 0.005,
+		"frictionAir": 0.01,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "Volvo-fixtures",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":13, "y":54 }, { "x":28, "y":52 }, { "x":29, "y":45 }, { "x":0, "y":17 }, { "x":8, "y":44 } ],
+					[ { "x":98, "y":43 }, { "x":101, "y":34 }, { "x":99, "y":24 }, { "x":72, "y":14 }, { "x":0, "y":17 }, { "x":29, "y":45 }, { "x":66, "y":47 }, { "x":86, "y":45 } ],
+					[ { "x":86, "y":52 }, { "x":86, "y":45 }, { "x":66, "y":47 }, { "x":72, "y":54 } ],
+					[ { "x":60, "y":0 }, { "x":20, "y":0 }, { "x":7, "y":10 }, { "x":0, "y":17 }, { "x":72, "y":14 } ],
+					[ { "x":6, "y":6 }, { "x":7, "y":10 }, { "x":20, "y":0 } ],
+					[ { "x":1, "y":40 }, { "x":8, "y":44 }, { "x":0, "y":17 } ],
+					[ { "x":93, "y":17 }, { "x":72, "y":14 }, { "x":99, "y":24 } ]
+				]
+			}
+		]
+	}
+}

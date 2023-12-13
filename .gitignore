@@ -1,0 +1,23 @@
+# Ignore all bundle files
+/dist
+
+# Ignore package-lock.json (may alter if I want to sync with other developers)
+/package-lock.json
+
+# Ignore all .log files
+*.log
+
+# Ignore all .env files
+*.env
+
+# Ignore all .DS_Store files (if you're using a Mac)
+.DS_Store
+
+# Ignore all node_modules directories
+node_modules
+
+# Ignore ls (directory listing)
+ls.txt
+
+# Ignore directory listing for node_modules
+node_modules.txt

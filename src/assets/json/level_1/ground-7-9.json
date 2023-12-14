@@ -1,9 +1,9 @@
 {
 	"generator_info": "Shape definitions generated with PhysicsEditor. Visit https://www.codeandweb.com/physicseditor",
-	"ground-7-9": {
+	"ground": {
 		"type": "fromPhysicsEditor",
-		"label": "ground-7-9",
-		"isStatic": false,
+		"label": "ground",
+		"isStatic": true,
 		"density": 0.1,
 		"restitution": 0,
 		"friction": 0.1,
@@ -16,7 +16,7 @@
 		},
 		"fixtures": [
 			{
-				"label": "ground-7-9-fixtures",
+				"label": "ground-fixtures",
 				"isSensor": false,
 				"vertices": [
 					[ { "x":493, "y":447 }, { "x":493, "y":143 }, { "x":467, "y":151 }, { "x":0, "y":447 } ],

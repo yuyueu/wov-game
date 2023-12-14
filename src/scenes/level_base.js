@@ -8,6 +8,13 @@ class Level_Base extends Phaser.Scene {
         super({key: key});
     }
 
+    init() {
+        this.worldBounds = {
+            width: 1980 * 5,
+            height: 1080
+        };
+    }
+
     preload() {
         this.load.spritesheet('car', 'assets/volvo.png', { frameWidth: 101, frameHeight: 54 });
         this.load.json('carPhysics', 'assets/json/Volvo.json');
@@ -23,6 +30,8 @@ class Level_Base extends Phaser.Scene {
     }
 
     create(scene) {
+        scene.matter.world.setBounds(0, 0, this.worldBounds.width, this.worldBounds.height, 32, true, true, false, true);
+
         if (scene.car === undefined) {
             throw new Error(scene.scene.key + ': Car not defined before calling super.create()');
         }
@@ -105,7 +114,7 @@ class Level_Base extends Phaser.Scene {
         });
 
         scene.cameras.main.startFollow(scene.car);
-        scene.cameras.main.setBounds(0, 0, 1920 * 5, 1080);
+        scene.cameras.main.setBounds(0, 0, this.worldBounds.width, this.worldBounds.height);
     }
 
     createCar(scene, x, y) {

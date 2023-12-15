@@ -15,6 +15,7 @@ class Level_1 extends Level_Base {
         this.load.image('background', 'assets/level_1/background.png');
 
         this.load.spritesheet('lava-1', 'assets/level_1/lava-1.png', { frameWidth: 254, frameHeight: 206 });
+        this.load.atlas('lava-1-atlas', 'assets/json/level_1/lava-1.json');
         this.load.spritesheet('lava-2', 'assets/level_1/lava-2.png', { frameWidth: 501, frameHeight: 206 });
         this.load.spritesheet('lava-3', 'assets/level_1/lava-3.png', { frameWidth: 749, frameHeight: 206 });
 
@@ -63,10 +64,17 @@ class Level_1 extends Level_Base {
     }
 
     createGround() {
-        let ground1 = this.matter.add.image(0, 0, 'ground-1', null, { shape: this.cache.json.get('ground-1-physics').ground1 });
-        ground1.setOrigin(0, 1);
-        //ground1.setExistingBody(ground1.body, true);
-        ground1.setPosition(400, this.worldBounds.height - 200);
+        let ground1 = this.matter.add.image(400, 400, 'ground-1', null, { shape: this.cache.json.get('ground-1-physics').ground1 });
+        // ground1.setOrigin(0, 1);
+        // ground1.setExistingBody(ground1.body, true);
+        // ground1.setPosition(0, this.worldBounds.height - ground1.displayHeight);
+
+        let graphics = this.add.graphics({ fillStyle: { color: 0xff0000 } });
+
+        let circ = graphics.fillCircle(ground1.x, ground1.y, 5);
+
+        console.debug('Center to left: ' + (ground1.getCenter().x - ground1.getLeftCenter().x));
+        console.debug('Center to right: ' + (ground1.getRightCenter().x - ground1.getCenter().x));
 
         // this.anims.create({
         //     key: 'lava-1',
@@ -76,8 +84,8 @@ class Level_1 extends Level_Base {
         // });
 
         // let lava1 = this.matter.add.sprite(0, 0, 'lava-1');
-        // // lava1.setOrigin(0, 1);
-        // lava1.setPosition(ground1.displayWidth, this.worldBounds.height);
+        // let lava1_physics = this.textures.get('lava-1-atlas').get('lava1');
+        // this.matter.world.enable(lava1, lava1_physics);
         // lava1.anims.play('lava-1');
 
         // let ground2 = this.matter.add.image(0, 0, 'ground-2', null, { shape: this.cache.json.get('ground-2-physics').ground2 });

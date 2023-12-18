@@ -84,13 +84,13 @@ This is a tutorial meant for developers who will develop the game. For installat
 
 1. **Download and Install Node.js and npm**: Node.js is a tool that lets you run JavaScript on your computer. npm (Node Package Manager) is a tool that comes with Node.js and it allows you to install and manage other tools that your project needs. You can download Node.js and npm from [here](https://nodejs.org/en/download/). Just choose the version that matches your operating system, download it, and follow the instructions to install it.
 
-2. **Download the Project**: You need to download the project files. The project is hosted on GitHub [here](https://github.com/RashadHashemi/wov-game), there should be a green "Code" button. Click it, then click "Download ZIP". Once the download is complete, find the ZIP file in your downloads folder and extract it.
+2. **Download the Project**: You need to download the project files. The project is hosted on GitHub [here](https://github.com/RashadHashemi/wov-game), there should be a green "Code" button. Click it, then click "Download ZIP". Once the download is complete, find the ZIP file in your downloads folder and **extract it**.
 
 3. **Open a Terminal or Command Prompt**: You need to open a terminal (on Mac or Linux) or powershell prompt (on Windows). This is where you'll type the commands to install the project's tools and build the project. You can find the terminal or command prompt by searching for it in your computer's search bar.
 
 4. **Navigate to the Project Directory**: In the terminal or command prompt, you need to navigate to the directory where you extracted the project files. You can do this by typing `cd ` (note the space), then dragging the folder from your file explorer into the terminal or command prompt window, and then pressing Enter.
 
-It should look something like this: `cd C:\User\John\wov-game`
+    It should look something like this: `cd C:\User\John\wov-game`
 
 5. **Install the Project's Tools**: In the terminal or command prompt, type the following command and press Enter:
 

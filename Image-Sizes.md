@@ -1,0 +1,13 @@
+* *Background* 1920 x 1080
+* *Cloud-1* 385 x 101
+* *Cloud-2* 488 x 172
+* *Flag* 78 x 131
+* *Ground-1-3-4-5-8-10-11-13-17* 191 x 109
+* *Ground-2-9* 713 x 408
+* *Ground-6-12* 941 x 625
+* *Ground-7* 2366 x 591
+* *Ground-14* 304 x 458
+* *Ground-15* 833 x 502
+* *Ground-16* 814 x 667
+* *Snow* 1920 x 1080
+* *Snow-Layer* 9600 x 713

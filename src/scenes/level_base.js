@@ -148,7 +148,7 @@ class Level_Base extends Phaser.Scene {
 
     update(scene) {
         if (this.spacebar.isDown) {
-            Phaser.Physics.Matter.Matter.Body.applyForce(scene.car.body, scene.car.body.position, { x: 0.1, y: 0 });
+            Phaser.Physics.Matter.Matter.Body.applyForce(scene.car.body, scene.car.body.position, { x: 0.05, y: 0 });
             scene.car.anims.play('accelerating', true);
         } else if (scene.car.body.velocity.x > 0.01) {
             scene.car.anims.play('retarding', true);

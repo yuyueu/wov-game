@@ -35,3 +35,4 @@
 * *ground-16* 814 x 667
 * *snow* 1920 x 1080
 * *snow-layer* 9600 x 713
+* *start-finish-line* 33 x 137

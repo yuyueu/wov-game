@@ -27,7 +27,7 @@
 * *clouds-2-neon-1* 505 x 170 **(Add effect)**
 * *clouds-2-neon-2* 524 x 198 **(Add effect)**
 * *elevator* 166 x 27
-* *flag* 78 x 131
+* *flags* 78 x 131
 * *ground-1* 195 x 147
 * *ground-1-neon* 230 x 182 **(Add effect)**
 * *ground-2-4-6* 107 x 324
@@ -57,7 +57,7 @@
 * *background* 1920 x 1080
 * *clouds-1* 385 x 101
 * *clouds-2* 488 x 172
-* *flag* 78 x 131
+* *flags* 78 x 131
 * *ground-1-3-4-5-8-10-11-13-17* 191 x 109
 * *ground-2-9* 713 x 408
 * *ground-6-12* 941 x 625

@@ -18,7 +18,39 @@
 
 
 ## Level 2
-**--To be updated--**
+* *background* 1920 x 1080
+* *bed-for-nails* 170 x 81
+* *clouds-1* 570 x 192
+* *clouds-1-neon-1* 544 x 185 **(Add effect)**
+* *clouds-1-neon-2* 565 x 214 **(Add effect)**
+* *clouds-2* 558 x 178
+* *clouds-2-neon-1* 505 x 170 **(Add effect)**
+* *clouds-2-neon-2* 524 x 198 **(Add effect)**
+* *elevator* 166 x 27
+* *flag* 78 x 131
+* *ground-1* 195 x 147
+* *ground-1-neon* 230 x 182 **(Add effect)**
+* *ground-2-4-6* 107 x 324
+* *ground-2-4-6-neon-1* 102 x 321 **(Add effect)**
+* *ground-2-4-6-neon-2* 184 x 362 **(Add effect)**
+* *ground-3* 651 x 486
+* *ground-3-neon* 712 x 452 **(Add effect)**
+* *ground-5* 773 x 193
+* *ground-5-neon* 832 x 225 **(Add effect)**
+* *ground-7* 655 x 586
+* *ground-7-neon* 708 x 509 **(Add effect)**
+* *ice-1-4-6* 380 x 229
+* *ice-2-5* 285 x 147
+* *ice-3-7* 1312 x 583
+* *ice-8* 398 x 138
+* *ice-9* 107 x 325
+* *ice-10-bed-for-nails* 261 x 173
+* *level-neon-1* 9400 x 548 **(Add effect)**
+* *level-neon-2* 9443 x 582 **(Add effect)**
+* *level-neon-base* 9392 x 541
+* *nails* 182 x 27
+* *nails-neon* 174 x 25 **(Add effect)**
+* *start-finish-line* 35 x 140
 
 
 ## Level 3

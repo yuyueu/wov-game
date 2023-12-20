@@ -150,7 +150,7 @@ class Level_1 extends Level_Base {
 
     class chooseGravity extends Phaser.Scene {
         constructor() {
-            key: 'chooseGravity'
+            super({ key: 'chooseGravity' });
         }
 
         create() {
